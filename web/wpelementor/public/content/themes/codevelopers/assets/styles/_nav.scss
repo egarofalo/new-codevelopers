@@ -26,8 +26,10 @@ nav {
                     background-color: $gray-800;
                     height: 4px;
                     position: relative;
-                    transition: background-color 0.5s ease-in-out,
-                        top 0.5s ease-in-out, transform 0.5s ease-in-out 0.5s;
+                    transition:
+                        background-color 0.5s ease-in-out,
+                        top 0.5s ease-in-out,
+                        transform 0.5s ease-in-out 0.5s;
                 }
 
                 &:before {
@@ -43,7 +45,8 @@ nav {
                     background-color: $gray-800;
                     height: 4px;
                     width: 28px;
-                    transition: background-color 0.5s ease-in-out,
+                    transition:
+                        background-color 0.5s ease-in-out,
                         opacity 0s ease-in-out 0.5s;
                 }
 
@@ -51,14 +54,15 @@ nav {
                     &:before,
                     &:after,
                     .navbar-toggler-icon {
-                        background-color: $blue;
+                        background-color: $primary;
                     }
                 }
 
                 &.collapsed {
                     &:before,
                     &:after {
-                        transition: background-color 0.5s ease-in-out,
+                        transition:
+                            background-color 0.5s ease-in-out,
                             top 0.5s ease-in-out 0.5s,
                             transform 0.5s ease-in-out 0s;
                     }
@@ -90,6 +94,24 @@ nav {
 
             .navbar-collapse {
                 transition: height 0.4s ease-in-out;
+
+                .primary-navbar-ctas {
+                    padding-left: 1rem;
+
+                    @include media-breakpoint-down(lg) {
+                        padding-left: 0.75rem;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        padding-left: 0;
+                        padding-bottom: 0.5rem;
+                        text-align: center;
+                    }
+
+                    .cta {
+                        line-height: 1.3;
+                    }
+                }
             }
 
             .navbar-nav {
@@ -106,10 +128,11 @@ nav {
 
                     & > .nav-link {
                         text-decoration: none;
-                        text-transform: uppercase;
 
-                        @include media-breakpoint-down(md) {
+                        @include media-breakpoint-down(lg) {
                             text-align: center;
+                            padding-left: 0.75rem;
+                            padding-right: 0.75rem;
                         }
                     }
                 }

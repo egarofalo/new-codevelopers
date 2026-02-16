@@ -110,7 +110,7 @@ add_action('wpelementor_before_primary_navbar_collapse', function () {
  * Add contents after the primary navbar collapse.
  */
 add_action('wpelementor_after_primary_navbar_collapse', function () {
-    // add contents here...
+    get_template_part('header/primary-navbar-ctas');
 });
 
 /**

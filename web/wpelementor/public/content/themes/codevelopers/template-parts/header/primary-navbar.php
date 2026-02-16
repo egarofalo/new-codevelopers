@@ -12,7 +12,7 @@ use function Codevelopers\WpElementor\Helpers\Navbar\primary_navbar,
                 $custom_logo_id = get_theme_mod('custom_logo');
                 echo wp_get_attachment_image(
                     $custom_logo_id,
-                    'thumbnail',
+                    'full',
                     false,
                     ['class' => 'img-fluid custom-logo']
                 );

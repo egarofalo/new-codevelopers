@@ -3,7 +3,7 @@ a.button,
 input[type="submit"].button,
 button[type="submit"].button {
     @extend .btn;
-    @extend .btn-outline-dark;
+    @extend .btn-primary;
 }
 
 input[type="submit"],
