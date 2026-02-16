@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+    web:
+        build:
+            context: ./web
+        container_name: codevelopers_web
+        ports:
+            - "8080:80"
+            - "8443:443"
+        volumes:
+            - ./web/wpelementor:/var/www/html
+        environment:
+            - APACHE_DOCUMENT_ROOT=/var/www/html/public
+            - THEME_NAME=codevelopers
+        depends_on:
+            - db
+            - mailpit
+
+    db:
+        build:
+            context: ./db
+        image: mysql:5.7
+        platform: linux/amd64
+        container_name: codevelopers_db
+        ports:
+            - "3308:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: codevelopers
+        volumes:
+            - ./db/data:/var/lib/mysql
+            - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "mysqladmin",
+                    "ping",
+                    "-h",
+                    "localhost",
+                    "-proot_password",
+                ]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
+    mailpit:
+        image: axllent/mailpit:latest
+        container_name: codevelopers_mailpit
+        ports:
+            - "8025:8025" # UI web to view emails
+            - "1025:1025" # SMTP port
+        environment:
+            MP_MAX_MESSAGES: 1000 # Optional: max number of messages to store (default: 1000)            

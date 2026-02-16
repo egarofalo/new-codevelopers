@@ -1,0 +1,10 @@
+.site-body {
+    padding: 2rem 0;
+
+    .page-template-template-full-width &,
+    .page-template-template-image-header &,
+    .page-template-template-homepage & {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

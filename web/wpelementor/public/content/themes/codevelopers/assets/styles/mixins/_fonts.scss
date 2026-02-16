@@ -1,0 +1,10 @@
+@mixin titillium-web($weight, $font-size: 1rem) {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: $weight;
+    font-size: $font-size;
+}
+
+@mixin coda($font-size: 1rem) {
+    font-family: "Coda", cursive;
+    font-size: $font-size;
+}

@@ -1,0 +1,56 @@
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "johnpbloch/wordpress": "^6.0.1",
+        "wpackagist-plugin/loco-translate": "^2.5.8",
+        "wpackagist-plugin/force-regenerate-thumbnails": "^2.0.6",
+        "wpackagist-plugin/svg-support": "^2.4.2",
+        "wpackagist-plugin/loginpress": "^5.0.0",
+        "wpackagist-plugin/wp-mail-smtp": "^4.5.0",
+        "wpackagist-plugin/wp-optimize": "^4.2.2"
+    },
+    "require-dev": {
+        "symfony/console": "^4.4.10",
+        "symfony/process": "^4.4.10",
+        "symfony/filesystem": "^4.4.10",
+        "symfony/finder": "^4.4.10",
+        "cocur/slugify": "^4.0.0"
+    },
+    "extra": {
+        "wordpress-install-dir": "public/wp",
+        "installer-paths": {
+            "public/content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "public/content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "public/content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Codevelopers\\Fullstack\\Config\\": "config",
+            "Codevelopers\\Fullstack\\Console\\": "console"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": "Codevelopers\\Fullstack\\Config\\ComposerSetup::postCreateProject",
+        "post-install-cmd": "Codevelopers\\Fullstack\\Config\\ComposerSetup::postInstall",
+        "post-update-cmd": "Codevelopers\\Fullstack\\Config\\ComposerSetup::postUpdate"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true
+        }
+    }
+}

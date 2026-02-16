@@ -1,0 +1,6 @@
+@use "sass:math";
+
+// Grid layout styles
+.grid {
+    @include posts-grid;
+}

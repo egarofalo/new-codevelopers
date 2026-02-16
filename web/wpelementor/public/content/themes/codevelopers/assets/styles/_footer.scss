@@ -1,0 +1,14 @@
+.site-footer {
+    .site-footer__contents {
+        background-color: $gray-200;
+        padding: 2rem 0;
+
+        .site-footer__logo {
+            text-align: center;
+        }
+    }
+
+    .site-footer__vendor {
+        @include footer-vendor();
+    }
+}

@@ -1,0 +1,27 @@
+// Bootstrap grid breakpoints vars
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+// Bootstrap grid containers vars
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
+
+// New grid breakpoints xxs (extra extra small devices) and uxs (ultra extra small devices).
+$xxs: 430px;
+$uxs: 290px;

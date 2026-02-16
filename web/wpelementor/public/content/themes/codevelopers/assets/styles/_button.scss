@@ -1,0 +1,14 @@
+button.button,
+a.button,
+input[type="submit"].button,
+button[type="submit"].button {
+    @extend .btn;
+    @extend .btn-outline-dark;
+}
+
+input[type="submit"],
+button[type="submit"] {
+    &.submitting {
+        @extend .disabled;
+    }
+}

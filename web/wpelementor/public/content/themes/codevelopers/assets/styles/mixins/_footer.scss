@@ -1,0 +1,12 @@
+@mixin footer-vendor() {
+    background-color: $gray-100;
+    text-align: center;
+    padding: 0.5rem 0;
+    letter-spacing: 0.5px;
+
+    a {
+        @include coda(0.8rem);
+        color: $gray-500;
+        text-decoration: none;
+    }
+}

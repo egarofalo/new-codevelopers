@@ -1,0 +1,123 @@
+nav {
+    &.navbar {
+        .site-header & {
+            .navbar-brand {
+                .custom-logo {
+                    width: $navbar-brand-logo-width-sm;
+
+                    @include media-breakpoint-up(md) {
+                        width: $navbar-brand-logo-width;
+                    }
+
+                    @include media-breakpoint-up(lg) {
+                        width: $navbar-brand-logo-width-lg;
+                    }
+                }
+            }
+
+            .navbar-toggler {
+                border: none;
+
+                &:before,
+                &:after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    background-color: $gray-800;
+                    height: 4px;
+                    position: relative;
+                    transition: background-color 0.5s ease-in-out,
+                        top 0.5s ease-in-out, transform 0.5s ease-in-out 0.5s;
+                }
+
+                &:before {
+                    top: -4px;
+                }
+
+                &:after {
+                    top: 4px;
+                }
+
+                .navbar-toggler-icon {
+                    display: block;
+                    background-color: $gray-800;
+                    height: 4px;
+                    width: 28px;
+                    transition: background-color 0.5s ease-in-out,
+                        opacity 0s ease-in-out 0.5s;
+                }
+
+                &:hover {
+                    &:before,
+                    &:after,
+                    .navbar-toggler-icon {
+                        background-color: $blue;
+                    }
+                }
+
+                &.collapsed {
+                    &:before,
+                    &:after {
+                        transition: background-color 0.5s ease-in-out,
+                            top 0.5s ease-in-out 0.5s,
+                            transform 0.5s ease-in-out 0s;
+                    }
+                }
+
+                &[aria-expanded="true"] {
+                    .navbar-toggler-icon {
+                        opacity: 0;
+                    }
+
+                    &:before {
+                        top: 4px;
+                        transform: rotate(45deg);
+                    }
+
+                    &:after {
+                        top: -4px;
+                        transform: rotate(-45deg);
+                    }
+                }
+
+                &:focus,
+                &:focus-visible {
+                    outline: none;
+                    border: none;
+                    box-shadow: none;
+                }
+            }
+
+            .navbar-collapse {
+                transition: height 0.4s ease-in-out;
+            }
+
+            .navbar-nav {
+                & > .nav-item {
+                    @include media-breakpoint-down(md) {
+                        border-bottom: solid 1px $gray-200;
+                        padding-top: 0.5rem;
+                        padding-bottom: 0.5rem;
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+
+                    & > .nav-link {
+                        text-decoration: none;
+                        text-transform: uppercase;
+
+                        @include media-breakpoint-down(md) {
+                            text-align: center;
+                        }
+                    }
+                }
+
+                .dropdown-menu {
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}

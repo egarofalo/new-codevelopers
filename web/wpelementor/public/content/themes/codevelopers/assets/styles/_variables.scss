@@ -1,0 +1,40 @@
+@use "sass:math";
+
+// Breakpoints
+@import "./variables/breakpoints";
+
+// Global colors
+@import "./variables/color";
+
+// Body tag
+@import "./variables/body";
+
+// Links vars
+@import "./variables/link";
+
+// Paragraphs styles
+@import "./variables/paragraph";
+
+// Grid system
+@import "./variables/grid";
+
+// Options vars
+@import "./variables/options";
+
+// Global typography vars
+@import "./variables/typography";
+
+// Buttons + Forms vars
+@import "./variables/forms";
+
+// Navbar vars
+@import "./variables/navbar";
+
+// Dropdown vars
+@import "./variables/dropdown";
+
+// Loop vars
+@import "./variables/loop";
+
+// Images vars
+@import "./variables/images";

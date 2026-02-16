@@ -1,0 +1,25 @@
+{
+    "publicPath": "dist",
+    "browserSync": {
+        "proxy": "https://wpelementor.test",
+        "files": ["**/*.(php)", "**/*.(js|css)"],
+        "open": false
+    },
+    "extractVendorLibraries": [],
+    "entries": [
+        {
+            "output": "main.js",
+            "input": "main.js"
+        },
+        {
+            "output": "forms.js",
+            "input": "forms.js"
+        }
+    ],
+    "styleEntries": [
+        {
+            "output": "main.css",
+            "input": "main.scss"
+        }
+    ]
+}

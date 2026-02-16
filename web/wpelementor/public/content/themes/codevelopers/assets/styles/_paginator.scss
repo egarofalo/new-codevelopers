@@ -1,0 +1,55 @@
+.site-paginator {
+    .site-paginator__content {
+        border: none;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        text-align: center;
+
+        &:empty {
+            display: none;
+        }
+
+        ul {
+            display: inline-flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                padding: 0 4px;
+
+                .page-numbers {
+                    cursor: pointer;
+                    line-height: 1;
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    color: $gray-800;
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    border-radius: 50%;
+                    border: 2px solid $primary;
+                    transition: ease-in-out background 0.5s;
+
+                    &.current {
+                        opacity: 0.5;
+                        background: $gray-200;
+                    }
+
+                    &:hover {
+                        background: $gray-200;
+                    }
+
+                    &.dots {
+                        &:hover {
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

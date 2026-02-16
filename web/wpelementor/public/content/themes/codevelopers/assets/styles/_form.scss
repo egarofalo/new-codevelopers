@@ -1,0 +1,15 @@
+form {
+    // Site search form
+    &.search-form {
+        max-width: 25rem;
+    }
+
+    // Comment form
+    &.comment-form {
+        .comment-form-comment {
+            textarea#comment {
+                max-width: 600px;
+            }
+        }
+    }
+}

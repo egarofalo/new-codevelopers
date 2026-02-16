@@ -1,0 +1,29 @@
+{
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "dev": "npx mix",
+        "watch": "npx mix watch",
+        "production": "npx mix --production"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.8",
+        "bootstrap": "^5.3.8",
+        "browser-sync": "^2.29.3",
+        "browser-sync-webpack-plugin": "2.3.0",
+        "clean-webpack-plugin": "^4.0.0",
+        "gsap": "^3.7.1",
+        "imagemin-webpack-plugin": "^2.4.2",
+        "laravel-mix": "^6.0.49",
+        "resolve-url-loader": "5.0.0",
+        "sass": "^1.68.0",
+        "sass-loader": "^12.1.0",
+        "webpack-notifier": "^1.8.0"
+    },
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions"
+    ],
+    "dependencies": {}
+}
