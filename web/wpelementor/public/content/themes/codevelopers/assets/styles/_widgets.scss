@@ -1,0 +1,16 @@
+.customers-carousel {
+    &.elementor-widget-image-carousel {
+        .swiper {
+            .swiper-slide {
+                img {
+                    width: 100%;
+                    max-width: 200px;
+                }
+            }
+
+            .swiper-pagination.swiper-pagination-bullets {
+                bottom: -1rem;
+            }
+        }
+    }
+}
