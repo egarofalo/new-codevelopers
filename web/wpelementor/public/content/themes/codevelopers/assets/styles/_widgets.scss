@@ -4,12 +4,30 @@
             .swiper-slide {
                 img {
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 160px;
+                    filter: grayscale(1) contrast(0.8);
                 }
             }
 
             .swiper-pagination.swiper-pagination-bullets {
                 bottom: -1rem;
+            }
+        }
+    }
+}
+
+.what-we-do-box {
+    &.elementor-widget-image-box {
+        box-shadow: 0px 9px 30.8px 0px rgba(32, 113, 68, 0.42);
+        border-radius: 6px;
+
+        .elementor-image-box-wrapper {
+            .elementor-image-box-img {
+                img {
+                    width: auto;
+                    max-width: 100%;
+                    max-height: 120px;
+                }
             }
         }
     }
