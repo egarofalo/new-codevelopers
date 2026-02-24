@@ -13,7 +13,8 @@
         "wpackagist-plugin/svg-support": "^2.4.2",
         "wpackagist-plugin/loginpress": "^5.0.0",
         "wpackagist-plugin/wp-mail-smtp": "^4.5.0",
-        "wpackagist-plugin/wp-optimize": "^4.2.2"
+        "wpackagist-plugin/wp-optimize": "^4.2.2",
+        "wpackagist-plugin/formidable": "^6.28"
     },
     "require-dev": {
         "symfony/console": "^4.4.10",
