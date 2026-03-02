@@ -1,14 +1,36 @@
 .site-footer {
     .site-footer__contents {
-        background-color: $gray-200;
+        background-color: $dark-blue;
         padding: 2rem 0;
 
         .site-footer__logo {
             text-align: center;
+
+            img {
+                width: 220px;
+                max-width: 100%;
+            }
         }
     }
 
-    .site-footer__vendor {
-        @include footer-vendor();
+    .site-footer__social-media {
+        a {
+            color: $white;
+            font-size: 1.25rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: lighten($secondary, 15%);
+            }
+        }
+    }
+
+    .copyright {
+        opacity: 0.7;
+        color: #fff;
+        font-size: 0.875rem;
+        max-width: 400px;
+        margin: 0 auto;
     }
 }

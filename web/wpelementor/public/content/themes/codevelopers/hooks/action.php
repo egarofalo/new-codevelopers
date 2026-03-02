@@ -124,5 +124,11 @@ add_action('wpelementor_before_site_footer_contents', function () {
  * Add contents after the site footer contents.
  */
 add_action('wpelementor_after_site_footer_contents', function () {
-    // add contents here...
+    get_template_part('footer/social-media', null, [
+        'facebook_url' => get_field('facebook', 'option'),
+        'instagram_url' => get_field('instagram', 'option'),
+        'linkedin_url' => get_field('linkedin', 'option'),
+    ]);
+
+    get_template_part('footer/copyright');
 });
