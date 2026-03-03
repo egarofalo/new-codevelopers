@@ -1,6 +1,8 @@
 nav {
     &.navbar {
         .site-header & {
+            background-color: $gray-100;
+
             .navbar-brand {
                 .custom-logo {
                     width: $navbar-brand-logo-width-sm;

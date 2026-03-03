@@ -1,0 +1,20 @@
+.elementor-widget-codevelopers_icons_list .codevelopers-icons-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.elementor-widget-codevelopers_icons_list .codevelopers-icons-list-item {
+    display: flex;
+    align-items: center;
+}
+
+.elementor-widget-codevelopers_icons_list .codevelopers-icons-list-item a {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    color: inherit;
+    transition-property: color;
+}

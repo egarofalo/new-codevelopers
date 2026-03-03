@@ -4,7 +4,7 @@ use function Codevelopers\WpElementor\Helpers\Navbar\primary_navbar,
     Codevelopers\WpElementor\Helpers\Navbar\primary_navbar_mobile;
 ?>
 
-<nav class="navbar navbar-expand-md bg-body-tertiary">
+<nav class="navbar navbar-expand-md">
     <div class="container-xxl">
         <a class="navbar-brand" href="<?php echo esc_url(home_url()) ?>">
             <?php

@@ -1,12 +1,15 @@
 .site-title {
-    background-color: $gray-200;
-    padding: 1rem 0;
+    padding: 2rem 0;
 
     h1 {
         text-align: center;
-        font-size: 2rem;
-        color: $black;
+        font-size: 1.8rem;
+        color: $dark;
         margin: 0;
+    }
+
+    .page-template-template-full-width & {
+        padding-bottom: 0;
     }
 
     .page-template-template-homepage & {
