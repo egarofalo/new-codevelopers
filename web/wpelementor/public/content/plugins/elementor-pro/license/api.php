@@ -3,7 +3,6 @@ namespace ElementorPro\License;
 
 use Elementor\Core\Common\Modules\Connect\Module as ConnectModule;
 use ElementorPro\Plugin;
-use ElementorPro\Modules\Tiers\Module as Tiers;
 use Elementor\Api as Core_API;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -246,7 +245,7 @@ class API {
 		return $license_data;
 	}
 
-	public static function get_version( $force_update = true ) {
+	public static function get_version( $force_update = true, $additional_status = '' ) {
 		$cache_key = self::TRANSIENT_KEY_PREFIX . ELEMENTOR_PRO_VERSION;
 
 		$info_data = self::get_transient( $cache_key );
@@ -274,7 +273,7 @@ class API {
 				'name' => $updater->plugin_name,
 				'slug' => $updater->plugin_slug,
 				'version' => $updater->plugin_version,
-				'license' => '',
+				'license' => Admin::get_license_key(),
 				'translations' => wp_json_encode( $plugin_translations ),
 				'locales' => wp_json_encode( $locales ),
 				'beta' => 'yes' === get_option( 'elementor_beta', 'no' ),
@@ -285,6 +284,10 @@ class API {
 				if ( ! empty( $site_key ) ) {
 					$body_args['site_key'] = $site_key;
 				}
+			}
+
+			if ( ! empty( $additional_status ) ) {
+				$body_args['status'] = $additional_status;
 			}
 
 			$info_data = self::remote_post( 'pro/info', $body_args );
@@ -628,5 +631,37 @@ class API {
 		}
 
 		return $tier;
+	}
+
+	public static function get_plan_type() {
+		if ( ! static::is_license_active() ) {
+			return 'free';
+		}
+
+		$license_data = static::get_license_data();
+		$plan_type = $license_data['tier'] ?? 'free';
+
+		return $plan_type;
+	}
+
+	/**
+	 * Get the subscription ID for Elementor Pro.
+	 *
+	 * @return string
+	 */
+	public static function get_subscription_id(): string {
+		$license_data = static::get_license_data();
+
+		return $license_data['subscription_id'] ?? $license_data['subscriptionId'] ?? $license_data['subscription-id'] ?? '';
+	}
+
+	/**
+	 * Get the subscription display name for Elementor Pro.
+	 *
+	 * @return string
+	 */
+	public static function get_subscription_display_name(): string {
+		$plan_type = static::get_plan_type();
+		return 'Elementor Pro ' . ucfirst( $plan_type );
 	}
 }

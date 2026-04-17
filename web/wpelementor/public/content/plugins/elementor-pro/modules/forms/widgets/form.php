@@ -823,8 +823,6 @@ class Form extends Form_Base {
 			]
 		);
 
-		$this->maybe_add_send_app_promotion_control();
-
 		$actions = Module::instance()->actions_registrar->get();
 
 		$actions_options = [];
@@ -2486,7 +2484,7 @@ class Form extends Form_Base {
 								</span>
 							<?php endif; ?>
 							<?php if ( ! empty( $instance['button_text'] ) ) : ?>
-								<span <?php $this->print_render_attribute_string( 'button-text' ); ?>><?php $this->print_unescaped_setting( 'button_text' ); ?></span>
+								<span <?php $this->print_render_attribute_string( 'button-text' ); ?>><?php echo wp_kses_post( $instance['button_text'] ); ?></span>
 							<?php endif; ?>
 						</span>
 					</button>
@@ -2747,7 +2745,7 @@ class Form extends Form_Base {
 								<# } #>
 
 								<# if ( settings.button_text ) { #>
-									<span {{{ view.getRenderAttributeString( 'button-text' ) }}}>{{{ settings.button_text }}}</span>
+									<span {{{ view.getRenderAttributeString( 'button-text' ) }}}>{{ settings.button_text }}</span>
 								<# } #>
 							</span>
 						</button>
@@ -2759,37 +2757,5 @@ class Form extends Form_Base {
 
 	public function get_group_name() {
 		return 'forms';
-	}
-
-	private function maybe_add_send_app_promotion_control(): void {
-		if ( Hints::is_plugin_installed( 'send-app' ) ) {
-			return;
-		}
-
-		$notice_id = 'send_app_forms_actions_notice';
-		if ( ! Hints::should_show_hint( $notice_id ) ) {
-			return;
-		}
-
-		$notice_content = wp_kses( __( 'Turning leads into sales can be easy.<br />Let Send do the work', 'elementor-pro' ), [ 'br' => [] ] );
-
-		$this->add_control(
-			'send_app_promo',
-			[
-				'type' => Controls_Manager::RAW_HTML,
-				'raw' => Hints::get_notice_template( [
-					'display' => ! Hints::is_dismissed( $notice_id ),
-					'type' => 'info',
-					'content' => $notice_content,
-					'icon' => true,
-					'dismissible' => $notice_id,
-					'button_text' => __( 'Start for free', 'elementor-pro' ),
-					'button_event' => $notice_id,
-					'button_data' => [
-						'action_url' => Hints::get_plugin_action_url( 'send-app' ),
-					],
-				], true ),
-			]
-		);
 	}
 }

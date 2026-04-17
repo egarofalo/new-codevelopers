@@ -43,7 +43,7 @@ class Module extends BaseModule {
 
 		$app->set_settings( 'kit-library', array_merge( $prev_settings, [
 			'is_pro' => true,
-			'is_library_connected' => API::is_license_active() && $kit_library && $kit_library->is_connected(),
+			'is_library_connected' => API::is_license_active(),
 			'library_connect_url' => $activate->get_admin_url( 'authorize', [
 				'utm_source' => 'kit-library',
 				'utm_medium' => 'wp-dash',
@@ -52,6 +52,7 @@ class Module extends BaseModule {
 			] ),
 			'access_level' => API::get_library_access_level( 'kit' ),
 			'access_tier' => API::get_access_tier(),
+			'plan_type' => API::get_plan_type(),
 		] ) );
 	}
 

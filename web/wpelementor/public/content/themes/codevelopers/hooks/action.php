@@ -59,7 +59,7 @@ add_action('wp_enqueue_scripts', function () {
  */
 add_action('wp_enqueue_scripts', function () {
     vendor_scripts();
-}, 0);
+});
 
 /**
  * Enqueue your scripts in this method.

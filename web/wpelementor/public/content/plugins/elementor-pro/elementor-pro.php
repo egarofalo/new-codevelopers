@@ -3,43 +3,128 @@
  * Plugin Name: Elementor Pro
  * Description: Elevate your designs and unlock the full power of Elementor. Gain access to dozens of Pro widgets and kits, Theme Builder, Pop Ups, Forms and WooCommerce building capabilities.
  * Plugin URI: https://go.elementor.com/wp-dash-wp-plugins-author-uri/
- * Version: 3.30.0
+ * Version: 3.35.1
  * Author: Elementor.com
  * Author URI: https://go.elementor.com/wp-dash-wp-plugins-author-uri/
- * Text Domain: elementor-pro
+ * Requires PHP: 7.4
+ * Requires at least: 6.7
  * Requires Plugins: elementor
- * Elementor tested up to: 3.30.0
+ * Elementor tested up to: 3.35.0
+ * Text Domain: elementor-pro
  */
-
-update_option( 'elementor_pro_license_key', '*********' );
-update_option( '_elementor_pro_license_v2_data', [ 'timeout' => strtotime( '+12 hours', current_time( 'timestamp' ) ), 'value' => json_encode( [ 'success' => true, 'license' => 'valid', 'expires' => '01.01.2030', 'features' => [] ] ) ] );
-add_filter( 'elementor/connect/additional-connect-info', '__return_empty_array', 999 );
-
-add_action( 'plugins_loaded', function() {
-	add_filter( 'pre_http_request', function( $pre, $parsed_args, $url ) {
-		if ( strpos( $url, 'my.elementor.com/api/v2/licenses' ) !== false ) {
-			return [
-				'response' => [ 'code' => 200, 'message' => 'ОК' ],
-				'body'     => json_encode( [ 'success' => true, 'license' => 'valid', 'expires' => '01.01.2030' ] )
-			];
-		} elseif ( strpos( $url, 'my.elementor.com/api/connect/v1/library/get_template_content' ) !== false ) {
-			$response = wp_remote_get( "http://wordpressnull.org/elementor/templates/{$parsed_args['body']['id']}.json", [ 'sslverify' => false, 'timeout' => 25 ] );
-			if ( wp_remote_retrieve_response_code( $response ) == 200 ) {
-				return $response;
-			} else {
-				return $pre;
-			}
-		} else {
-			return $pre;
-		}
-	}, 10, 3 );
-} );
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_PRO_VERSION', '3.30.0' );
+/* Ultrapack Unlock */
+update_option( 'elementor_pro_license_key', 'ep-**********' );
+$e_full_data_unlock = ["expires" => "2033-11-10 00:00:00","subscription_id" => "99999999","status" => "ACTIVE","recurring" => true,"features" => ["template_access_level_20", "kit_access_level_20", "activity-log", "breadcrumbs", "form", "posts", "template", "countdown", "slides", "price-list", "portfolio", "flip-box", "price-table", "login", "share-buttons", "theme-post-content", "theme-post-title", "nav-menu", "blockquote", "media-carousel", "animated-headline", "facebook-comments", "facebook-embed", "facebook-page", "facebook-button", "testimonial-carousel", "post-navigation", "search-form", "post-comments", "author-box", "call-to-action", "post-info", "theme-site-logo", "theme-site-title", "theme-archive-title", "theme-post-excerpt", "theme-post-featured-image", "archive-posts", "theme-page-title", "sitemap", "reviews", "table-of-contents", "lottie", "code-highlight", "hotspot", "video-playlist", "progress-tracker", "section-effects", "sticky", "scroll-snap", "page-transitions", "mega-menu", "nested-carousel", "loop-grid", "loop-carousel", "theme-builder", "elementor_icons", "elementor_custom_fonts", "dynamic-tags", "taxonomy-filter", "email", "email2", "mailpoet", "mailpoet3", "redirect", "header", "footer", "single-post", "single-page", "archive", "search-results", "error-404", "loop-item", "font-awesome-pro", "typekit", "gallery", "off-canvas", "link-in-bio-var-2", "link-in-bio-var-3", "link-in-bio-var-4", "link-in-bio-var-5", "link-in-bio-var-6", "link-in-bio-var-7", "search", "size-variable", "transitions", "element-manager-permissions", "akismet", "display-conditions", "woocommerce-products", "wc-products", "woocommerce-product-add-to-cart", "wc-elements", "wc-categories", "woocommerce-product-price", "woocommerce-product-title", "woocommerce-product-images", "woocommerce-product-upsell", "woocommerce-product-short-description", "woocommerce-product-meta", "woocommerce-product-stock", "woocommerce-product-rating", "wc-add-to-cart", "dynamic-tags-wc", "woocommerce-product-data-tabs", "woocommerce-product-related", "woocommerce-breadcrumb", "wc-archive-products", "woocommerce-archive-products", "woocommerce-product-additional-information", "woocommerce-menu-cart", "woocommerce-product-content", "woocommerce-archive-description", "paypal-button", "woocommerce-checkout-page", "woocommerce-cart", "woocommerce-my-account", "woocommerce-purchase-summary", "woocommerce-notices", "settings-woocommerce-pages", "settings-woocommerce-notices", "popup", "custom-css", "global-css", "custom_code", "custom-attributes", "form-submissions", "form-integrations", "dynamic-tags-acf", "dynamic-tags-pods", "dynamic-tags-toolset", "editor_comments", "stripe-button", "role-manager", "global-widget", "activecampaign", "cf7db", "convertkit", "discord", "drip", "getresponse", "mailchimp", "mailerlite", "slack", "webhook", "product-single", "product-archive", "wc-single-elements", "atomic-custom-attributes", "atomic-custom-css"],"tier" => "agency","generation" => "empty","activated" => true,"success" => true];
+update_option( '_elementor_pro_license_v2_data', [ 'timeout' => strtotime( '+12 hours', current_time( 'timestamp' ) ), 'value' => json_encode( $e_full_data_unlock ) ] );
+update_option('elementor_one_dismiss_connect_alert', true);
+update_option('elementor_one_welcome_screen_completed', true);
+update_option('elementor_one_editor_update_notification_dismissed', true);
+add_filter( 'elementor/connect/additional-connect-info', '__return_empty_array', 999 );
+add_action( 'plugins_loaded', function() {
+	add_filter( 'pre_http_request', function( $pre, $parsed_args, $url ) {
+	if ( strpos( $url, 'activations.ultrapackv2.com' ) !== false ) {
+		return false;
+	}
+	if ( strpos( $url, 'cloud-library.prod.builder.elementor.red') !== false || strpos( $url, 'ms-8874.elementor.com') !== false ) {
+		return [
+			'body' => json_encode(['success' => true]),
+			'response' => ['code' => 200, 'message' => 'OK'],
+			'headers' => ['content-type' => 'application/json'],
+		];
+	}
+	if ( strpos( $url, 'my.elementor.com') !== false ) {
+		global $e_full_data_unlock;
+		// Template Library API
+		if ( strpos( $url, '/api/connect/v1/library/get_template_content' ) !== false ) {
+			$response = wp_remote_get( "https://activations.ultrapackv2.com/product/1b873cda/elementor-pro-templates-ultrapackv2-com-53579245/{$parsed_args['body']['id']}.json", [ 'sslverify' => false, 'timeout' => 35 ] );
+			if ( wp_remote_retrieve_response_code( $response ) == 200 ) {
+				return $response;
+			} else {
+				return $pre;
+			}
+
+		// Kit Library API
+		} elseif ( preg_match( '/https:\/\/(my\.elementor|ms-8874\.elementor)\.com\/api\/v1\/kits-library\/kits\/([\w]+)\/download-link/', $url, $matches ) ) {
+			$kit_id = $matches[2];
+            $response = array(
+                'body' => json_encode(array(
+                    'download_link' => 'https://activations.ultrapackv2.com/product/1b873cda/elementor-pro-kits-ultrapackv2-com-53579245/templates-id/' . $kit_id . '.zip',
+                )),
+                'response' => array(
+                    'code' => 200,
+                    'message' => 'OK',
+                ),
+                'headers' => array(
+                    'content-type' => 'application/json',
+                ),
+            );
+            return $response;
+
+		// Validate License API
+		} elseif ( strpos( $url, '/api/v2/license/validate' ) !== false ||  strpos( $url, '/api/v2/license/activate' ) !== false ) {
+            $response = array(
+                'body' => json_encode($e_full_data_unlock),
+                'response' => array(
+                    'code' => 200,
+                    'message' => 'OK',
+                ),
+                'headers' => array(
+                    'content-type' => 'application/json',
+                ),
+            );
+            return $response;
+		
+		// Translations API
+		} elseif ( strpos( $url, '/api/v2/pro/info' ) !== false ) {
+            if ( ! empty( $parsed_args['headers']['X-LoopChk'] ) ) {
+                return $pre;
+            }
+            if ( empty( $parsed_args['headers'] ) ) {
+                $parsed_args['headers'] = array();
+            }
+            $parsed_args['headers']['X-LoopChk'] = '1';
+            $response = wp_remote_post( $url, $parsed_args );
+            if ( is_wp_error( $response ) ) {
+                return $pre;
+            }
+            $response_code = wp_remote_retrieve_response_code( $response );
+            $response_body = wp_remote_retrieve_body( $response );
+            if ( $response_code != 200 || ! $response_body ) {
+                return $pre;
+            }
+            $data = json_decode( $response_body, true );
+            if ( ! is_array( $data ) ) {
+                return $pre;
+            }
+            if ( isset( $data['translations'] ) && is_array( $data['translations'] ) ) {
+                foreach ( $data['translations'] as &$translation ) {
+                    if ( isset( $translation['language'] ) ) {
+                        $translation['package'] = 'https://activations.ultrapackv2.com/wp-content/ElementorAPIData/translations/elementor-pro-' . $translation['language'] . '.zip';
+                    }
+                }
+            }
+            $response = array(
+                'body' => json_encode( $data ),
+                'response' => array( 'code' => 200, 'message' => 'OK'),
+                'headers' => array( 'content-type' => 'application/json' )
+            );
+            return $response;
+		} else {
+			return $pre;
+		}
+	}
+	
+	return false;
+	}, 10, 3 );
+} );
+/* End Ultrapack Unlock */
+
+define( 'ELEMENTOR_PRO_VERSION', '3.35.1' );
 
 /**
  * All versions should be `major.minor`, without patch, in order to compare them properly.
@@ -47,8 +132,8 @@ define( 'ELEMENTOR_PRO_VERSION', '3.30.0' );
  * (e.g. Core 3.15.0-beta1 and Core 3.15.0-cloud2 should be fine when requiring 3.15, while
  * requiring 3.15.2 is not allowed)
  */
-define( 'ELEMENTOR_PRO_REQUIRED_CORE_VERSION', '3.28' );
-define( 'ELEMENTOR_PRO_RECOMMENDED_CORE_VERSION', '3.30' );
+define( 'ELEMENTOR_PRO_REQUIRED_CORE_VERSION', '3.32' );
+define( 'ELEMENTOR_PRO_RECOMMENDED_CORE_VERSION', '3.35' );
 
 define( 'ELEMENTOR_PRO__FILE__', __FILE__ );
 define( 'ELEMENTOR_PRO_PLUGIN_BASE', plugin_basename( ELEMENTOR_PRO__FILE__ ) );
@@ -58,14 +143,6 @@ define( 'ELEMENTOR_PRO_MODULES_PATH', ELEMENTOR_PRO_PATH . 'modules/' );
 define( 'ELEMENTOR_PRO_URL', plugins_url( '/', ELEMENTOR_PRO__FILE__ ) );
 define( 'ELEMENTOR_PRO_ASSETS_URL', ELEMENTOR_PRO_URL . 'assets/' );
 define( 'ELEMENTOR_PRO_MODULES_URL', ELEMENTOR_PRO_URL . 'modules/' );
-
-// Include Composer's autoloader
-if ( file_exists( ELEMENTOR_PRO_PATH . 'vendor/autoload.php' ) ) {
-	require_once ELEMENTOR_PRO_PATH . 'vendor/autoload.php';
-	// We need this file because of the DI\create function that we are using.
-	// Autoload classmap doesn't include this file.
-	require_once ELEMENTOR_PRO_PATH . 'vendor_prefixed/php-di/php-di/src/functions.php';
-}
 
 /**
  * Load gettext translate for our text domain.

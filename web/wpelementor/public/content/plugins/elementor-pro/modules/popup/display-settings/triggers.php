@@ -3,6 +3,7 @@
 namespace ElementorPro\Modules\Popup\DisplaySettings;
 
 use Elementor\Controls_Manager;
+use ElementorPro\Core\Utils\Hints;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly

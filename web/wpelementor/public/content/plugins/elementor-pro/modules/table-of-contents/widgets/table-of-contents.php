@@ -545,9 +545,6 @@ class Table_Of_Contents extends Base_Widget {
 			]
 		);
 
-		$logical_start = is_rtl() ? 'right' : 'left';
-		$logical_end = is_rtl() ? 'left' : 'right';
-
 		$this->add_responsive_control(
 			'header_text_align',
 			[
@@ -556,7 +553,7 @@ class Table_Of_Contents extends Base_Widget {
 				'options' => [
 					'start' => [
 						'title' => esc_html__( 'Start', 'elementor-pro' ),
-						'icon' => "eicon-text-align-$logical_start",
+						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-pro' ),
@@ -564,10 +561,11 @@ class Table_Of_Contents extends Base_Widget {
 					],
 					'end' => [
 						'title' => esc_html__( 'End', 'elementor-pro' ),
-						'icon' => "eicon-text-align-$logical_end",
+						'icon' => 'eicon-text-align-right',
 					],
 				],
 				'default' => 'start',
+				'classes' => 'elementor-control-start-end',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-toc__header-title' => 'text-align: {{VALUE}}',
 				],
@@ -633,15 +631,16 @@ class Table_Of_Contents extends Base_Widget {
 				'options' => [
 					'row-reverse' => [
 						'title' => esc_html__( 'Start', 'elementor-pro' ),
-						'icon' => "eicon-h-align-$logical_start",
+						'icon' => 'eicon-h-align-left',
 					],
 					'row' => [
 						'title' => esc_html__( 'End', 'elementor-pro' ),
-						'icon' => "eicon-h-align-$logical_end",
+						'icon' => 'eicon-h-align-right',
 					],
 				],
 				'default' => 'row',
 				'toggle' => false,
+				'classes' => 'elementor-control-start-end',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-toc__header' => 'flex-direction: {{VALUE}};',
 				],
@@ -929,15 +928,19 @@ class Table_Of_Contents extends Base_Widget {
 
 		$html_tag = Utils::validate_html_tag( $settings['html_tag'] );
 		?>
+		<?php if ( ! Utils::is_empty( $settings['title'] ) || ( 'yes' === $settings['minimize_box'] ) ) : ?>
 		<div <?php $this->print_render_attribute_string( 'header' ); ?>>
+			<?php if ( ! Utils::is_empty( $settings['title'] ) ) : ?>
 			<<?php Utils::print_validated_html_tag( $html_tag ); ?> class="elementor-toc__header-title">
-				<?php $this->print_unescaped_setting( 'title' ); ?>
+				<?php echo wp_kses_post( $settings['title'] ); ?>
 			</<?php Utils::print_validated_html_tag( $html_tag ); ?>>
+			<?php endif; ?>
 			<?php if ( 'yes' === $settings['minimize_box'] ) : ?>
 				<div <?php $this->print_render_attribute_string( 'expand-button' ); ?>><?php Icons_Manager::render_icon( $settings['expand_icon'], [ 'aria-hidden' => 'true' ] ); ?></div>
 				<div <?php $this->print_render_attribute_string( 'collapse-button' ); ?>><?php Icons_Manager::render_icon( $settings['collapse_icon'], [ 'aria-hidden' => 'true' ] ); ?></div>
 			<?php endif; ?>
 		</div>
+		<?php endif; ?>
 		<div <?php $this->print_render_attribute_string( 'body' ); ?>>
 			<div class="elementor-toc__spinner-container">
 				<?php

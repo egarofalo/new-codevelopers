@@ -14,7 +14,8 @@
         "wpackagist-plugin/loginpress": "^5.0.0",
         "wpackagist-plugin/wp-mail-smtp": "^4.5.0",
         "wpackagist-plugin/wp-optimize": "^4.2.2",
-        "wpackagist-plugin/formidable": "^6.28"
+        "wpackagist-plugin/formidable": "^6.28",
+        "wpackagist-plugin/advanced-database-cleaner": "^4.0"
     },
     "require-dev": {
         "symfony/console": "^4.4.10",
