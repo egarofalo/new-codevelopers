@@ -8,7 +8,7 @@ use function Codevelopers\WpElementor\Helpers\String\str_concat;
  */
 add_filter('wpelementor_hide_dynamic_sidebar', function ($name) {
     return in_array(true, [
-        // add conditionals here...
+        is_404(),
     ], true);
 });
 

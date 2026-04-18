@@ -6,12 +6,12 @@ return [
     'DEBUG_LOG' => false,
     'WP_DEBUG_DISPLAY' => false,
     # MySQL connection parameters
-    'DB_NAME' => 'wpelementor',
-    'DB_USER' => 'root',
-    'DB_PASSWORD' => '',
+    'DB_NAME' => 'codevelopers_codev',
+    'DB_USER' => 'codevelopers_codev',
+    'DB_PASSWORD' => '#xL7nn4G7@ms=SkD',
     'DB_HOST' => 'localhost',
     # Site root URL
-    'SITE_URL' => 'https://wpelementor.prod',
+    'SITE_URL' => 'https://codevelopers.tech',
     # Proxy server parameters
     'PROXY' => false,
     'PROXY_HOST' => '',
